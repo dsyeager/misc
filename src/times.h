@@ -3,6 +3,7 @@
 #include "get_nanoseconds.h"
 
 #include <string_view>
+#include <utility>
 #include <vector>
 
 /**
@@ -59,7 +60,6 @@ public:
 
         for (auto & [key, val] : times::s_times_vector)
         {
-            auto &pr = s_times[i];
             std::cout << key << ": ";
             if (prev)
                 std::cout << (double(val - prev) / 1000);
@@ -71,7 +71,7 @@ public:
     }
 
 private:
-    static std::vector<pair<std::string_view, uint64_t>> s_times_vector;
+    static std::vector<std::pair<std::string_view, uint64_t>> s_times_vector;
 }; // end times class
 
 }; // end namespace dsy
