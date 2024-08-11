@@ -71,7 +71,7 @@ public:
     }
 
 private:
-    static std::vector<std::pair<std::string_view, uint64_t>> s_times_vector;
+    inline static std::vector<std::pair<std::string_view, uint64_t>> s_times_vector;
 }; // end times class
 
 }; // end namespace dsy
