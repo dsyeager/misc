@@ -11,21 +11,6 @@
 using std::string;
 using namespace std::literals;
 
-struct my_nump : std::numpunct<char>
-{
-    std::string do_grouping() const { return "\3"; }
-};
-
-static my_nump s_my_nump;
-
-std::string add_commas(uint64_t n)
-{
-    std::ostringstream s;
-    s.imbue(std::locale(s.getloc(), new my_nump)); // that could be a lot of new/deletes
-    s << n;
-    return s.str();
-}
-
 class tester
 {
 public:
