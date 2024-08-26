@@ -16,7 +16,7 @@ namespace dsy
 class logs
 {
 public:
-    inline uint32_t verbose = 0;
+    inline static uint32_t verbose = 0;
 
 }; // end of logs
 
