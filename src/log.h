@@ -22,5 +22,9 @@ public:
 
 }; // end of namespace
 
-#define TRACE std::cerr << get_nanoseconds() << ' ' << __func__ << ' ' << __FILE__ << ':' << __LINE__ << ' '
-#define ENDL std::endl
+inline std::mutex s_log_mutex;
+
+#define TRACE(level) if (dsy::logs::verbose >= level) { std::unique_lock alock(s_log_mutex); std::cerr << get_nanoseconds() << " TRACE " << __func__ << ' ' << basename(__FILE__) << ':' << __LINE__ << ' '
+#define ERROR { std::unique_lock alock(s_log_mutex); std::cerr << get_nanoseconds() << " ERROR " << __func__ << ' ' << basename(__FILE__) << ':' << __LINE__ << ' '
+#define ENDL std::endl; }
+
