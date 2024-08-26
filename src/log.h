@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream> 
+#include <mutex> 
 
 // eventually want to be able to override this in the build so that the logging can be integrated with existing logs in pre-existing apps
 // for now just wrap everything in begin and end macros
