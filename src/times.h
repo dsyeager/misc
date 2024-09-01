@@ -57,14 +57,13 @@ public:
 
         // TODO: consider adding an optional aggregation step for apps that call
         // add_time repeatedly for the same desc.
-
         for (auto & [key, val] : times::s_times_vector)
         {
             std::cout << key << ": ";
             if (prev)
                 std::cout << (double(val - prev) / 1000);
             else
-                std::cout << 0;
+                std::cout << (double(val - s_start_ns) / 1000);
             std::cout << " us" << std::endl;
             prev = val;
         }
@@ -72,6 +71,7 @@ public:
 
 private:
     inline static std::vector<std::pair<std::string_view, uint64_t>> s_times_vector;
+    inline static uint64_t s_start_ns = get_nanoseconds();
 }; // end times class
 
 }; // end namespace dsy
